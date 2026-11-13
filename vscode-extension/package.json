@@ -3,7 +3,7 @@
   "displayName": "Research AI Assistant",
   "description": "Create and discuss a clear, maintainable research project structure.",
   "version": "0.1.0",
-  "publisher": "darenar",
+  "publisher": "VladislavPyzhov",
   "license": "MIT",
   "icon": "images/icon.png",
   "pricing": "Free",
@@ -79,7 +79,7 @@
     "check": "tsc --noEmit",
     "test": "tsc -p tsconfig.test.json && node --test .test-dist/tests/*.test.js",
     "package": "npm run check && npm test && npm run build && vsce package",
-    "publish:marketplace": "npm run check && npm test && npm run build && vsce publish"
+    "publish:marketplace": "npm run check && npm test && npm run build && vsce publish --oidc"
   },
   "dependencies": {
     "@openai/agents": "^0.4.10",

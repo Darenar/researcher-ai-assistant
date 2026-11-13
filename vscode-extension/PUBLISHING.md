@@ -1,18 +1,31 @@
 # Publishing to the Visual Studio Marketplace
 
 The extension source, bundle configuration, icon, Marketplace metadata,
-license, changelog, and GitHub publishing workflow are already included.
+license, changelog, and GitHub publishing workflow are included.
 
-## One-time account setup
+## One-time Marketplace setup
 
-1. Create an Azure DevOps organization if you do not already have one.
-2. Create a Visual Studio Marketplace publisher at
-   <https://marketplace.visualstudio.com/manage/publishers/>.
-3. Use `darenar` as the publisher ID. If that ID is unavailable, change the
-   `publisher` field in `package.json` to the ID you create.
-4. Create an Azure DevOps Personal Access Token with Marketplace management
-   permission.
-5. Never add the token to this repository.
+The Marketplace publisher is:
+
+```text
+Publisher name: Vladislav Pyzhov
+Publisher ID: VladislavPyzhov
+```
+
+Open <https://marketplace.visualstudio.com/manage/publishers/>, select the
+`VladislavPyzhov` publisher, and create a **Trusted Publishing** policy with
+these exact values:
+
+```text
+Policy name: Research Assistant releases
+Repository owner: Darenar
+Repository: researcher-ai-assistant
+Workflow: publish-extension.yml
+Environment: leave empty
+```
+
+This policy lets the GitHub Actions workflow obtain a short-lived publishing
+credential through OpenID Connect. Do not create or store a Marketplace PAT.
 
 ## Validate a release locally
 
@@ -29,23 +42,12 @@ This creates `research-ai-assistant-<version>.vsix`. Install it in a clean VS
 Code profile and verify API-key setup, a question, dry-run formatting, and real
 formatting before publishing.
 
-## Publish locally
-
-```bash
-npx vsce login darenar
-npm run publish:marketplace
-```
-
-If you used another publisher ID, substitute it in the login command and in
-`package.json`.
-
 ## Publish with GitHub Actions
 
-1. Add the Personal Access Token as a repository secret named `VSCE_PAT`.
-2. Update `version` in `package.json` and add the release notes to
+1. Update `version` in `package.json` and add the release notes to
    `CHANGELOG.md`.
-3. Commit and push the change.
-4. Create and push a matching tag, for example:
+2. Commit and push the change.
+3. Create and push a matching tag, for example:
 
    ```bash
    git tag extension-v0.1.0
@@ -53,7 +55,8 @@ If you used another publisher ID, substitute it in the login command and in
    ```
 
 The `Publish VS Code extension` workflow validates, bundles, and publishes the
-release. It can also be started manually from the GitHub Actions page.
+release through the Trusted Publishing policy. No GitHub secret is required.
+The workflow can also be started manually from the GitHub Actions page.
 
 After the first release is accepted, users can search for **Research AI
 Assistant** in VS Code and click **Install**. Marketplace updates are delivered
