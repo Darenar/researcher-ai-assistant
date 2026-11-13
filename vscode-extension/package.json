@@ -1,0 +1,95 @@
+{
+  "name": "research-ai-assistant",
+  "displayName": "Research AI Assistant",
+  "description": "Create and discuss a clear, maintainable research project structure.",
+  "version": "0.1.0",
+  "publisher": "darenar",
+  "license": "MIT",
+  "icon": "images/icon.png",
+  "pricing": "Free",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Darenar/researcher-ai-assistant.git",
+    "directory": "vscode-extension"
+  },
+  "homepage": "https://github.com/Darenar/researcher-ai-assistant#readme",
+  "bugs": {
+    "url": "https://github.com/Darenar/researcher-ai-assistant/issues"
+  },
+  "engines": {
+    "vscode": "^1.101.0"
+  },
+  "categories": [
+    "Other",
+    "Education"
+  ],
+  "keywords": [
+    "research",
+    "academic",
+    "latex",
+    "project structure",
+    "AI agent"
+  ],
+  "extensionKind": [
+    "workspace"
+  ],
+  "main": "./dist/extension.js",
+  "capabilities": {
+    "untrustedWorkspaces": {
+      "supported": false,
+      "description": "The extension creates project files when the user requests formatting."
+    }
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "researchAssistant.ask",
+        "title": "Ask About This Project",
+        "category": "Research Assistant"
+      },
+      {
+        "command": "researchAssistant.configureApiKey",
+        "title": "Configure API Key",
+        "category": "Research Assistant"
+      },
+      {
+        "command": "researchAssistant.clearApiKey",
+        "title": "Clear API Key",
+        "category": "Research Assistant"
+      }
+    ],
+    "configuration": {
+      "title": "Research Assistant",
+      "properties": {
+        "researchAssistant.model": {
+          "type": "string",
+          "default": "gpt-4.1-mini",
+          "description": "Model name used by the research agent."
+        },
+        "researchAssistant.baseUrl": {
+          "type": "string",
+          "default": "",
+          "description": "Optional OpenAI-compatible API base URL, for example http://localhost:11434/v1."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "esbuild src/extension.ts --bundle --platform=node --target=node22 --external:vscode --outfile=dist/extension.js",
+    "check": "tsc --noEmit",
+    "test": "tsc -p tsconfig.test.json && node --test .test-dist/tests/*.test.js",
+    "package": "npm run check && npm test && npm run build && vsce package",
+    "publish:marketplace": "npm run check && npm test && npm run build && vsce publish"
+  },
+  "dependencies": {
+    "@openai/agents": "^0.4.10",
+    "zod": "^4.1.12"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.1",
+    "@types/vscode": "^1.101.0",
+    "@vscode/vsce": "^3.6.2",
+    "esbuild": "^0.27.0",
+    "typescript": "^5.9.3"
+  }
+}

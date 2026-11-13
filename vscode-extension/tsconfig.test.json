@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": false,
+    "outDir": ".test-dist",
+    "rootDir": "."
+  },
+  "include": [
+    "src/scaffold.ts",
+    "src/templates.ts",
+    "tests/**/*.ts"
+  ]
+}
