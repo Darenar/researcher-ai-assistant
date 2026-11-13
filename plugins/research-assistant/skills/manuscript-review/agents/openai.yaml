@@ -1,0 +1,4 @@
+interface:
+  display_name: "Manuscript Review"
+  short_description: "Critically review research writing and claims"
+  default_prompt: "Use $manuscript-review to review this manuscript critically."

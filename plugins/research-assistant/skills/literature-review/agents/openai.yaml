@@ -1,0 +1,4 @@
+interface:
+  display_name: "Literature Review"
+  short_description: "Write evidence-grounded literature reviews"
+  default_prompt: "Use $literature-review to draft a cited review from similar papers."

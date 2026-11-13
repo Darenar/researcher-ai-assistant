@@ -1,0 +1,4 @@
+interface:
+  display_name: "Citation Audit"
+  short_description: "Check citations, BibTeX, and claim support"
+  default_prompt: "Use $citation-audit to verify this paper's citations."

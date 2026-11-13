@@ -25,6 +25,7 @@ test("creates the expected research structure", async () => {
 
     assert.ok(result.created.includes("data/raw/"));
     assert.ok(result.created.includes("artifacts/figures/"));
+    assert.ok(result.created.includes("config/research-assistant.json"));
     assert.match(
       await readFile(path.join(projectPath, "paper/main.tex"), "utf8"),
       /Research Paper Title/,

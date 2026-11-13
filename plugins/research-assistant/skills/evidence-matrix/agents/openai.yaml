@@ -1,0 +1,4 @@
+interface:
+  display_name: "Evidence Matrix"
+  short_description: "Build auditable structured evidence tables"
+  default_prompt: "Use $evidence-matrix to build an evidence table for this question."

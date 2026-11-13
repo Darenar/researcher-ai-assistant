@@ -11,4 +11,6 @@ node_modules/
 vscode-extension/dist/
 vscode-extension/*.vsix
 vscode-extension/.test-dist/
+.research-assistant/
+.dvc/cache/
 

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Research Repository"
+  short_description: "Create and audit research conventions"
+  default_prompt: "Use $research-repo-format to audit this repository and propose safe, additive fixes."

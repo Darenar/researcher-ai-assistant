@@ -1,0 +1,4 @@
+interface:
+  display_name: "Research Results"
+  short_description: "Build LaTeX tables and Plotly figures"
+  default_prompt: "Use $research-results-style to create publication-ready results from this analysis."

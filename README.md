@@ -116,6 +116,56 @@ The extension asks for confirmation before sending each message because the
 agent may create missing project files when requested. See
 `vscode-extension/PUBLISHING.md` for the Marketplace release checklist.
 
+## Use as a Codex plugin
+
+The portable plugin in `plugins/research-assistant/` keeps Codex as the chat
+and agent while adding focused research workflows:
+
+- project-local hybrid semantic and full-text literature retrieval with file and page citations;
+- verified paper ingest, conventional filenames, BibTeX records, and incremental re-indexing;
+- structured evidence matrices, systematic-review records, and literature-review drafting;
+- mechanical citation audits and source-to-claim verification;
+- Git-version comparison and data-to-result reproducibility audits;
+- independent critical review across code, results, citations, and manuscript text;
+- a durable research decision and progress log;
+- repository and paper naming conventions;
+- raw-data pointers, DVC, Google Drive, and Dropbox synchronization guidance;
+- LaTeX compilation and preview;
+- safe Overleaf Git synchronization;
+- LaTeX tables and Plotly figures; and
+- evidence-based synchronization reminders.
+
+Invoke `$rai` in Codex as the single explicit entry point. It routes the request
+to the relevant specialist skill, so commands such as `$rai search my
+literature`, `$rai compile my paper`, and `$rai check synchronization` all use
+the same chat interface.
+
+Additional direct entry points include `$paper-ingest`, `$evidence-matrix`,
+`$citation-audit`, `$systematic-review`, `$literature-review`,
+`$git-version-compare`, `$reproducibility-audit`, `$manuscript-review`,
+`$research-reviewer`, and `$research-log`. These remain available individually
+while `$rai` provides the simpler default interface.
+
+The literature index is local to each project under `.research-assistant/` and
+is never committed. The default semantic provider is the small local
+`BAAI/bge-small-en-v1.5` model through FastEmbed, so it does not need an API
+key; the model is downloaded once on first use. OpenAI (`text-embedding-3-small`)
+and Voyage (`voyage-4-lite`) can be selected in
+`config/research-assistant.json`. Changing models requires rebuilding the
+vectors because different embedding spaces cannot be converted or mixed. PDF
+indexing requires either the Python `pypdf` package or the `pdftotext` command.
+For the default local setup, install `fastembed` in the Python environment that
+Codex uses to run the skill; the embeddings skill checks this before building.
+
+The `plugins/` directory is a local marketplace. Register and install it with:
+
+```bash
+codex plugin marketplace add ./plugins
+codex plugin add research-assistant@research-assistant-local
+```
+
+Restart the ChatGPT desktop app after local plugin changes when testing there.
+
 ## Develop and test
 
 ```bash

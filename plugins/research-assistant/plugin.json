@@ -1,0 +1,45 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "research-assistant",
+  "version": "0.4.0",
+  "description": "Project-aware literature synthesis, critical review, reproducibility, data synchronization, and LaTeX publishing workflows.",
+  "author": {
+    "name": "Vladislav Pyzhov"
+  },
+  "repository": "https://github.com/Darenar/researcher-ai-assistant",
+  "license": "MIT",
+  "keywords": [
+    "research",
+    "literature",
+    "rag",
+    "latex",
+    "overleaf",
+    "reproducibility"
+  ],
+  "extensions": {
+    "com.openai": {
+      "onboardingSkill": "./skills/research-repo-format/SKILL.md",
+      "interface": {
+        "displayName": "Research Assistant",
+        "shortDescription": "Project-aware research and publishing workflows",
+        "longDescription": "Import and search literature with reusable semantic embeddings, build evidence matrices and reviews, compare Git versions, audit code and manuscripts, enforce reproducibility, keep raw data outside Git, compile LaTeX, and synchronize Overleaf.",
+        "developerName": "Vladislav Pyzhov",
+        "category": "Productivity",
+        "capabilities": [
+          "Read",
+          "Write"
+        ],
+        "websiteURL": "https://github.com/Darenar/researcher-ai-assistant",
+        "defaultPrompt": [
+          "Use $rai as the single entry point for this research project.",
+          "Use $rai to critically review this project's code, results, citations, and manuscript.",
+          "Use $rai to compare two Git versions and explain substantive research changes.",
+          "Search this project's literature semantically and answer with source and page citations.",
+          "Audit this research repository and suggest only the changes needed to meet its conventions.",
+          "Compile the LaTeX paper and summarize any actionable errors."
+        ],
+        "brandColor": "#315C4C"
+      }
+    }
+  }
+}

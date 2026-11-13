@@ -1,0 +1,4 @@
+interface:
+  display_name: "Research Checkpoint"
+  short_description: "Detect work that should be synchronized"
+  default_prompt: "Use $research-checkpoint to tell me what research work still needs to be synchronized."

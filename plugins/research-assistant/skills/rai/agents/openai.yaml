@@ -1,0 +1,6 @@
+interface:
+  display_name: "Research AI Assistant"
+  short_description: "Route research work to the right specialist"
+  default_prompt: "Use $rai to help with this research project."
+policy:
+  allow_implicit_invocation: false

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Literature RAG"
+  short_description: "Search project literature with citations"
+  default_prompt: "Use $literature-rag to answer my question from this project's literature with citations."

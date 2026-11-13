@@ -1,0 +1,20 @@
+{
+  "name": "research-assistant-local",
+  "interface": {
+    "displayName": "Research Assistant Development"
+  },
+  "plugins": [
+    {
+      "name": "research-assistant",
+      "source": {
+        "source": "local",
+        "path": "./research-assistant"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

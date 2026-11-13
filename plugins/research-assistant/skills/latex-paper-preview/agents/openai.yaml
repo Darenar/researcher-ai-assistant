@@ -1,0 +1,4 @@
+interface:
+  display_name: "LaTeX Paper Preview"
+  short_description: "Compile and preview the research paper"
+  default_prompt: "Use $latex-paper-preview to compile the paper and fix any actionable LaTeX errors."

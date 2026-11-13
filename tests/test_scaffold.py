@@ -17,6 +17,7 @@ def test_format_project_creates_expected_structure(tmp_path: Path) -> None:
     assert (project / "artifacts/tables").is_dir()
     assert (project / "artifacts/figures").is_dir()
     assert (project / "literature/references.bib").is_file()
+    assert (project / "config/research-assistant.json").is_file()
     assert (project / "paper/main.tex").is_file()
     assert (project / "paper/sections/methods.tex").is_file()
 

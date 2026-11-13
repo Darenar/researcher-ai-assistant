@@ -1,0 +1,4 @@
+interface:
+  display_name: "Research Data Sync"
+  short_description: "Version and restore raw data safely"
+  default_prompt: "Use $research-data-sync to check and synchronize this project's raw data safely."

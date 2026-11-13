@@ -1,0 +1,4 @@
+interface:
+  display_name: "Research Reviewer"
+  short_description: "Audit code, evidence, and manuscript together"
+  default_prompt: "Use $research-reviewer to critically audit this research project."

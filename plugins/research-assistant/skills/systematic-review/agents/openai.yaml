@@ -1,0 +1,4 @@
+interface:
+  display_name: "Systematic Review"
+  short_description: "Track screening and PRISMA review records"
+  default_prompt: "Use $systematic-review to manage this evidence review."

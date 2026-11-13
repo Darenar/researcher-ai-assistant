@@ -1,0 +1,4 @@
+interface:
+  display_name: "Git Version Compare"
+  short_description: "Compare research work across Git versions"
+  default_prompt: "Use $git-version-compare to explain what changed between these versions."

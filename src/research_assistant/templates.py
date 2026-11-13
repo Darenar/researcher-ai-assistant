@@ -37,9 +37,11 @@ PROJECT_README = """# Research project
 
 1. Never edit raw data. Create a derived file in `data/intermediate/`.
 2. Keep reusable logic in `src/`; keep scripts short.
-3. Generate tables and figures with code whenever possible.
+3. Generate final tables as LaTeX and figures with Plotly; keep the generating code.
 4. Add every cited work to `literature/references.bib`.
-5. Do not commit secrets, raw data, or generated LaTeX build files.
+5. Do not commit secrets, raw data, local retrieval indexes, or LaTeX build files.
+6. Track raw data with DVC or `data/raw.remote.json`, and synchronize valuable results before ending work.
+7. Compile the paper after changing text, tables, figures, citations, or LaTeX configuration.
 
 ## Build the paper
 
@@ -56,6 +58,8 @@ PROJECT_GITIGNORE = """# Secrets and local environment
 .venv/
 __pycache__/
 *.py[cod]
+.research-assistant/
+.dvc/cache/
 
 # Data is normally stored outside Git. Keep the folder placeholders.
 data/raw/*
@@ -76,14 +80,38 @@ paper/*.toc
 paper/main.pdf
 """
 
-REFERENCES_BIB = """% Keep all project references in this file.
-% Example:
-% @article{author2026shortname,
-%   author  = {Family Name, Given Name},
-%   title   = {Article title},
-%   journal = {Journal Name},
-%   year    = {2026}
-% }
+RESEARCH_ASSISTANT_CONFIG = """{
+  "schema_version": 1,
+  "literature": {
+    "roots": [
+      "literature/pdfs",
+      "literature/notes"
+    ],
+    "paper_filename": "first-author-year-short-title"
+  },
+  "embeddings": {
+    "provider": "local",
+    "model": "BAAI/bge-small-en-v1.5",
+    "dimensions": 384
+  },
+  "raw_data": {
+    "path": "data/raw",
+    "tracking": "dvc",
+    "remote_provider": null,
+    "remote_folder_id": null
+  },
+  "paper": {
+    "main": "paper/main.tex",
+    "overleaf_remote": "overleaf"
+  },
+  "results": {
+    "tables": "latex",
+    "figures": "plotly"
+  }
+}
+"""
+
+REFERENCES_BIB = """@comment{Keep all project references in this file. Example key: author2026shortname.}
 """
 
 MAIN_TEX = r"""\documentclass[11pt]{article}
@@ -137,7 +165,7 @@ PROJECT_FILES = {
     "src/.gitkeep": "",
     "scripts/.gitkeep": "",
     "tests/.gitkeep": "",
-    "config/.gitkeep": "",
+    "config/research-assistant.json": RESEARCH_ASSISTANT_CONFIG,
     "paper/main.tex": MAIN_TEX,
     **SECTION_FILES,
 }

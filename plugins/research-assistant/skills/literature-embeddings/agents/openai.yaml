@@ -1,0 +1,4 @@
+interface:
+  display_name: "Literature Embeddings"
+  short_description: "Create and verify semantic literature indexes"
+  default_prompt: "Use $literature-embeddings to create or check this project's semantic literature index."

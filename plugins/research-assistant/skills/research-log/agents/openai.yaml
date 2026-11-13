@@ -1,0 +1,4 @@
+interface:
+  display_name: "Research Log"
+  short_description: "Record decisions, progress, and open questions"
+  default_prompt: "Use $research-log to update this project's research record."

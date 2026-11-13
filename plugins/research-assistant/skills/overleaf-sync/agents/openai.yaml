@@ -1,0 +1,4 @@
+interface:
+  display_name: "Overleaf Sync"
+  short_description: "Safely synchronize LaTeX with Overleaf"
+  default_prompt: "Use $overleaf-sync to inspect and safely synchronize this paper with Overleaf."

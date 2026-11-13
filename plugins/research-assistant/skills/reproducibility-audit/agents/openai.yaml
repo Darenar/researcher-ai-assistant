@@ -1,0 +1,4 @@
+interface:
+  display_name: "Reproducibility Audit"
+  short_description: "Trace results from data to manuscript"
+  default_prompt: "Use $reproducibility-audit to check whether these results are reproducible."
